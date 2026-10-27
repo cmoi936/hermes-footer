@@ -1,6 +1,6 @@
 {
   "name": "@cmoi936/hermes-footer",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Bandeau commun (applications, retours, deconnexion) des applications Hercules IT derriere Authentik.",
   "license": "MIT",
   "type": "commonjs",

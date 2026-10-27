@@ -161,8 +161,14 @@ export default function AppBar({
       if (ev.key === 'Escape') { setOpen(false); if (btnRef.current) btnRef.current.focus(); }
     };
     const onClick = (ev) => {
-      if (panelRef.current && !panelRef.current.contains(ev.target) &&
-          btnRef.current && !btnRef.current.contains(ev.target)) {
+      /* Le composant vit dans un shadow root : au niveau document, `ev.target`
+       * est l'hôte `#hermes-footer-root`, pas l'élément cliqué. Tester
+       * `contains(ev.target)` refermait donc le panneau au pointerdown, ce qui
+       * démontait le lien AVANT le clic — « je clique sur une application, rien
+       * ne se passe ». Le chemin composé donne les vrais éléments traversés. */
+      const path = typeof ev.composedPath === 'function' ? ev.composedPath() : [];
+      const inside = (el) => !!el && (path.indexOf(el) !== -1 || el.contains(ev.target));
+      if (!inside(panelRef.current) && !inside(btnRef.current)) {
         setOpen(false);
       }
     };
