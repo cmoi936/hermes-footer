@@ -1,0 +1,9 @@
+{
+  "theme": "dark",
+  "brand": {
+    "label": "Hercules IT"
+  },
+  "portal": "https://hercules-it.fr/auth/if/user/",
+  "logout": "https://hercules-it.fr/auth/application/o/rdv/end-session/?next=https%3A%2F%2Fhercules-it.fr%2F",
+  "appsApi": "https://hercules-it.fr/auth/api/v3/core/applications/?page_size=50"
+}
